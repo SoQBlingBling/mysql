@@ -145,28 +145,161 @@ mysql_learn
       <th> 分类</th>
       <th> 类型</th>
       <th>大小</th>
-    <th>有符号范围</th>
-      <th>无符号范围</th>
+    <th>有符号范围(SIGNED)</th>
+      <th>无符号范围(UNSIGNED)</th>
       <th>描述</th>
     </tr>
     <tr>
       <td rowspan="8">数值类型</td>
-      <td>Cell 1</td>
-      <td>Cell 2</td>
-        <td>Cell 1</td>
-      <td>Cell 2</td>
-        <td>Cell 1</td>  </tr>
+      <td>TINYINT</td>
+      <td>1bytes</td>
+      <td>(-128,127)</td>
+      <td>(0,255)</td>
+        <td>小整数值</td>  </tr>
     <tr>
-         <td>Cell 1</td>
-      <td>Cell 2</td>
-        <td>Cell 1</td>
-      <td>Cell 2</td>
-        <td>Cell 1</td>  </tr>
+         <td>SMALLINT</td>
+      <td>2bytes</td>
+        <td>(-32768,32767)</td>
+      <td>(0,65535)</td>
+        <td>大整数值</td>  </tr>
     <tr>
-          <td>Cell 1</td>
-      <td>Cell 2</td>
-        <td>Cell 1</td>
-      <td>Cell 2</td>
-        <td>Cell 1</td>  </tr>
+          <td>MEDIUMINT</td>
+      <td>3bytes</td>
+      <td>(-8388608,8388607)</td>
+        <td>(0,16777215)</td>
+        <td>大整数值</td>  </tr>
+        <tr>
+          <td>INT或INTEGER</td>
+      <td>4bytes</td>
+      <td>(-2147483648,2147483647)</td>
+        <td>(0,4294967295)</td>
+        <td>大整数值</td>  </tr>
+       <tr>
+          <td>BIGINT</td>
+      <td>8bytes</td>
+      <td>(-2^63,2^63-1)</td>
+        <td>(0,2^64-1)</td>
+        <td>极大大整数值</td>  </tr>
+           <tr>
+          <td>FLOAT</td>
+      <td>4bytes</td>
+      <td>(-3.402823466E+38,3.402823466351 E+38)</td>
+        <td>0和（1.175494351 E-38 ，3.402823466 E+38）</td>
+        <td>单精度浮点数值</td>  </tr>
+           <tr>
+          <td>DOUBLE</td>
+      <td>8bytes</td>
+      <td>（-1.7976931348623157 E308 ，1.7976931348623157 E308）</td>
+        <td>0和（2.2250738585072014 E-308 ，1.7976931348623157 E+308）</td>
+        <td>双精度浮点数值</td>  </tr>
+        <tr>
+          <td>DECIMAL</td>
+      <td></td>
+      <td>依赖于M（精度）和D（标度）的值</td>
+        <td>依赖于M（精度）和D（标度）的值</td>
+        <td>小数值（精确定点数）</td>  </tr>
   </table>
 
+**精度 为数字整体长度 标度为小数点后的 长度**
+
+<table>
+  <tr>
+    <th> 分类</th>
+    <th> 类型</th>
+    <th>大小</th>
+    <th>描述</th>
+  </tr>
+  <tr>
+    <td rowspan="10">字符串类型</td>
+    <td>CHAR</td>
+    <td>0-255bytes</td>
+      <td>定长字符串</td>  </tr>
+  <tr>
+       <td>VARCHAT</td>
+    <td>0-65535bytes</td>
+      <td>变长字符串</td>  </tr>
+  <tr>
+        <td>TINYBLOB</td>
+    <td>0-255bytes</td>
+      <td>不超过255个字符的二进制数据</td>  </tr>
+      <tr>
+        <td>TINYTEXT</td>
+    <td>0-255bytes</td>
+      <td>短文本字符串</td>  </tr>
+     <tr>
+        <td>BLOB</td>
+     <td>0-65 535bytes</td>
+      <td>二进制形式长文本数据</td>  </tr>
+         <tr>
+        <td>TEXT</td>
+  <td>0-65 535bytes</td>
+      <td>长文本数据</td>  </tr>
+         <tr>
+        <td>MEDIUMBLOB</td>
+    <td>0-16 777 215bytes</td>
+      <td>二进制形式的中等长文本数据</td>  </tr>
+      <tr>
+        <td>MEDIUMTEXT</td>
+    <td>0-16 777 215bytes</td>
+      <td>中等长文本数据</td>  </tr>
+        <tr>
+        <td>LONGBLOB</td>
+    <td>0-4 294 967 295 bytes</td>
+      <td>二进制形式的极大文本数据</td>  </tr>
+      <tr>
+        <td>LONGTEXT</td>
+    <td>0-4 294 967 295 bytes</td>
+      <td>极大文本数据</td>  </tr>
+</table>
+
+<table>
+  <tr>
+    <th> 分类</th>
+    <th> 类型</th>
+    <th>大小</th>
+    <th>范围</th>
+    <th>格式</th>
+    <th>描述</th>
+  </tr>
+  <tr>
+    <td rowspan="5">日期类型</td>
+    <td>DATE</td>
+    <td>3</td>
+     <td>1000-01-01至9999-12-31</td>  
+     <td>yyyy-mm-dd</td>  
+     <td>日期值</td>  
+    </tr>
+  <tr>
+      <td>TIME</td>
+    <td>3</td>
+      <td>-838：59：59 至838-59-59</td>  
+    <td>hh:mm:ss</td>
+    <td>时间值或持续时间</td>
+      </tr>
+<tr>
+        <td>YEAR</td>
+    <td>1</td>
+      <td>1901至2155</td> 
+    <td>yyyy</td>
+    <td>年份值</td>
+    </tr>
+      <tr>
+        <td>DATETIME</td>
+        <td>8</td>
+    <td>1000-01-01 00：00：00 至9999-12-31 23：59：59</td>
+        <td>yyyy:mm:dd hh:mm:ss</td>
+      <td>混合日期时间值</td>  
+    </tr>
+     <tr>
+        <td>TIMESTAMP</td>
+     <td>4</td>
+      <td>1970-01-01 00：00：00 至2038-1-19 3：14：07</td>  
+        <td>yyyy:mm:dd hh:mm:ss</td>
+      <td>混合日期时间值、时间戳</td>  
+    </tr>
+</table>
+
+​      
+
+
+    
