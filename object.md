@@ -136,7 +136,56 @@ mysql_learn
 
   - 注意： 【。。。】是可选字段   最后一个字段后面没有逗号
 
-- 数据结构
+- 修改表操作
+
+  - 添加字段
+
+    ```sql
+    ALTER TABLE 表名 ADD 字段名 类型（长度） [COMMENT 注释][约束]
+    alter table user_info add name varchar(10) comment '用户姓名'
+    ```
+
+  - 修改数据类型
+
+    ```sql
+    ALTER TABLE 表名 MODIFY 字段名 新数据类型（长度）;
+    ```
+
+  - 修改字段名和字段类型
+
+    ```sql
+    ALTER TABLE 表名 CHANGE 旧字段名 新字段名 类型（长度） [COMMENT 注释] [约束];
+    ```
+
+  - 删除字段
+
+    ```sql
+    ALTER TABLE 表名 DROP 字段名：
+    
+    ```
+    
+   - 修改表名
+
+      ```sql
+      ALTER TABLE 表名 RENAME TO 新表名：	
+      ```
+
+  - 删除表
+
+      ```sql
+      DROP TABLE [IF EXISTS] 表名；
+      ```
+
+  - 删除指定表，并重新创建该表
+
+      ```sql
+      TRUNCATE TABLE 表名：  删除表表中的数据也会被删除
+      ```
+
+      
+
+#### 3.数据结构
+
 
   mysql 中数据类型有很多主要分为三类 数值类型、字符串类型、日期时间类型
 
@@ -301,5 +350,38 @@ mysql_learn
 
 ​      
 
+# 5.DML
 
-    
+对数据库中表的数据记录进行增删改的操作  
+
+#### 1.增加数据
+
+1.给指定字段添加数据
+
+```sql
+INSERT INTO 表名 （字段名1，字段名2） VALUES （值1，值2）
+insert into user(id,gender,nickname) values(1,'1','jake');
+```
+
+2.给全部字段添加数据
+
+```sql
+INSERT INTO 表名 VALUES （值1，值2....）
+ insert into user values(2,'1','tom');
+```
+
+3.批量添加数据
+
+```sql
+INSERT INTO 表名 （字段名1，字段名2） VALUES （值1，值2）,（值1，值2）,（值1，值2）
+insert into user(id,gender,nickname) values(1,'1','jake')，(2,'0','jerry');
+
+INSERT INTO 表名 VALUES （值1，值2....）,（值1，值2....）,（值1，值2....）,
+
+```
+
+注意：
+
+- 插入数据时，指定的阻断顺序需要与值的顺序是一一对应的
+- 字符串和日期型数据应该包含在引号中
+- 插入的数据大小，应该在字段的规定范围内
