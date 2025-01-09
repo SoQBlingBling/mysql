@@ -385,3 +385,33 @@ INSERT INTO 表名 VALUES （值1，值2....）,（值1，值2....）,（值1，
 - 插入数据时，指定的阻断顺序需要与值的顺序是一一对应的
 - 字符串和日期型数据应该包含在引号中
 - 插入的数据大小，应该在字段的规定范围内
+
+#### 2.修改数据
+
+ DML修改数据
+
+```sql
+UPDATE 表名 SET 字段名1 = 值1，字段名2= 值2，。。。[where 条件]；
+UPDATE user  set nickname = 'SQ' WHERE id = 1;
+UPDATE user  set nickname = 'SQ'，gender = ‘1’ WHERE id = 1;
+UPDATE user  set nickname = 'SQ'
+```
+
+注意：
+
+- 修改语句的条件可以有也可以没有，如果没有条件那么则会修改整张表的数据
+
+#### 3.删除所有数据
+
+DML删除数据
+
+```sql
+DELETE FROM 表名 [where 条件]；
+DELETE FROM `user` where gender = 2;
+
+```
+
+注意
+
+- where 可有可无 没有就会删除整张表的数据
+- delete 语句不能删除某个字段的名字可以使用update
