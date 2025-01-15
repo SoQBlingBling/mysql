@@ -415,3 +415,45 @@ DELETE FROM `user` where gender = 2;
 
 - where 可有可无 没有就会删除整张表的数据
 - delete 语句不能删除某个字段的名字可以使用update
+
+# 6.DQL
+
+数据查询语言 ，用来查询数据库中的表的记录
+
+> DQL语法
+
+```sql
+SELECT  字段列表
+FROM	表名列表
+WHERE	条件列表
+GROUP BT	分组字段列表
+HAVING	分组后条件列表
+ORDER BY	排序字段列表
+LIMIT	分页参数
+
+【基本查询、 条件查询（where）、聚合函数（count、max、min、avg、sum）、分组查询（group by）、排序查询（order by）、分页查询（limit）】
+```
+
+#### 1.基本查询
+
+1.查询多个字段
+
+```sql
+SELECT 字段1，字段2， 。。。。 FROM  表名；
+select id,nickname from `user`
+SELECT * FROM 表名；
+```
+
+2.设置别名
+
+```sql
+SELECT 字段1 AS 别名1 ，字段2  AS 别名2  FROM 表名； 
+```
+
+3.去除重复记录
+
+```sql
+SELECT DISTINCT 字段列表 FROM 表名；
+select DISTINCT gender  `性别` from `user`
+```
+
