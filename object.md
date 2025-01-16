@@ -457,3 +457,76 @@ SELECT DISTINCT 字段列表 FROM 表名；
 select DISTINCT gender  `性别` from `user`
 ```
 
+#### 2.聚合函数
+
+指将一列数据作为一个整体，纵向进行计算
+
+| 函数  | 功能     |
+| ----- | -------- |
+| count | 统计数量 |
+| max   | 最大值   |
+| min   | 最小值   |
+| avg   | 平均值   |
+| sum   | 求和     |
+
+语法  
+
+> select 聚合函数 （字段列表）from 表名
+>
+> select MAX(age) FROM `user`;
+
+注意null 值不参与聚合函数的计算
+
+#### 3.分组查询   group by
+
+1语法
+
+> select 字段列表 from 表名 【where 条件】 group by 分组字段名 【having 分组后过滤条件】
+>
+> 
+>
+>   // 根据年龄进行分组
+>
+> select age,count(*) FROM `user` GROUP BY age 
+>
+> //当同时出现where和 having 时
+>
+> select age, count（*）from user where age<45 group by age having count(*)>=3
+
+
+
+
+
+
+
+2.where 和 having区别
+
+1.执行时机不同：where是分组之前进行过滤 不满足where条件 不参与分组  having是对分组之后进行筛选
+
+2.where 不能对聚合函数进行判断 having 可以
+
+注意：
+
+​	执行顺序 where > 聚合函数 >having
+
+​	分组之后 查询的字段一般为聚合函数和分组字段，查询其他字段无任何意义
+
+#### 4.排序查询   order by
+
+1.语法
+
+> select 字段列表 from 表名 order  by 字段1 排序方式1 字段2 排序方式2
+
+2.排序方式
+
+> asc : 升序 （默认值）
+>
+> select * from `user` ORDER BY age DESC
+>
+> desc：降序
+>
+> select * from `user` ORDER BY age DESC
+
+注意 如果是2多字排序，当第一个字段值相同时，才会根据第二个字段进行排序
+
+> select  * from  user order by age asc ,entrydate desc
